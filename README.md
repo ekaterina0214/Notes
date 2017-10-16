@@ -1,3 +1,2 @@
 # Notes
-Ionic app
-Created by Kateryna Fomin and Batrak Igor
+Ionic app, created by Kateryna Fomin and Batrak Igor
