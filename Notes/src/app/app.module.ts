@@ -6,11 +6,14 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { EditProfilePage } from '../pages/edit_profile/edit_profile';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule} from 'angularfire2/auth'
 import { AngularFireModule } from 'angularfire2';
 import { FirebaseProvider } from './../providers/firebase/firebase';
 
@@ -29,13 +32,16 @@ import { FirebaseProvider } from './../providers/firebase/firebase';
     MyApp,
     HomePage,
     ListPage,
-    EditProfilePage
+    EditProfilePage,
+    LoginPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -43,7 +49,9 @@ import { FirebaseProvider } from './../providers/firebase/firebase';
     MyApp,
     HomePage,
     ListPage,
-    EditProfilePage
+    EditProfilePage,
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
