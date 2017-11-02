@@ -9,10 +9,27 @@ import { AngularFireAuth} from 'angularfire2/auth'
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user={} as User;
+
+  constructor(private afauth:AngularFireAuth,
+    public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+  async register(user:User){
+    try
+    {
+      if(user.password!=user.confirm_password)
+      {
+        console.error("Passwords are not similar!");
+      }
+      else{
+        const result=await this.afauth.auth.createUserWithEmailAndPassword(user.email,user.password);
+        console.log(result);
+        this.navCtrl.pop();
+      }      
+    }
+    catch(e){
+      console.error(e);
+    }
   }
 }
