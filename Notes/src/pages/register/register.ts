@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { AngularFireAuth} from 'angularfire2/auth'
 
@@ -11,8 +11,17 @@ import { AngularFireAuth} from 'angularfire2/auth'
 export class RegisterPage {
   user={} as User;
 
-  constructor(private afauth:AngularFireAuth,
+  constructor(private afauth:AngularFireAuth, private toastCtrl: ToastController,
     public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  presentToast(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast.present();
   }
 
   async register(user:User){
@@ -20,16 +29,15 @@ export class RegisterPage {
     {
       if(user.password!=user.confirm_password)
       {
-        console.error("Passwords are not similar!");
+        this.presentToast("Passwords are not similar!"); 
       }
       else{
         const result=await this.afauth.auth.createUserWithEmailAndPassword(user.email,user.password);
-        console.log(result);
         this.navCtrl.pop();
       }      
     }
     catch(e){
-      console.error(e);
+      this.presentToast(e);
     }
   }
 }

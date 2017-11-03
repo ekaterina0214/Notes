@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>CreateNewNote</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating>Title</ion-label>
+    <ion-input type="text" [(ngModel)]="note.title"></ion-input>
+  </ion-item>
+
+  <textarea wrap="soft" placeholder="Insert content of your Note here"></textarea>
+
+  <button ion-button class="btnCenter" full (click)=createNewNote()>Create</button>
+
+</ion-content>

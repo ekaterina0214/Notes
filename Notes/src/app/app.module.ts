@@ -16,6 +16,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule} from 'angularfire2/auth'
 import { AngularFireModule } from 'angularfire2';
 import { FirebaseProvider } from './../providers/firebase/firebase';
+import { CreateNewNotePage } from '../pages/create-new-note/create-new-note';
+import { SettingsPage } from '../pages/settings/settings';
 
   // Initialize Firebase
   const firebaseConfig = {
@@ -34,7 +36,9 @@ import { FirebaseProvider } from './../providers/firebase/firebase';
     ListPage,
     EditProfilePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    CreateNewNotePage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,9 @@ import { FirebaseProvider } from './../providers/firebase/firebase';
     ListPage,
     EditProfilePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    CreateNewNotePage,
+    SettingsPage
   ],
   providers: [
     StatusBar,

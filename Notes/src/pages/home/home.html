@@ -9,18 +9,13 @@
 
 <ion-content padding>
     <ion-row>
-      <ion-col col-9>
-        <ion-item>
-          <ion-input type="text" [(ngModel)]="newItem" placeholder="New Shopping item"></ion-input>
-        </ion-item>
-      </ion-col>
       <ion-col>
-        <button ion-button (click)="addItem()">Add!</button>
+        <button ion-button full (click)="addItem()">Add Note</button>
       </ion-col>
     </ion-row>
    
     <ion-list>
-      <ion-item-sliding *ngFor="let item of shoppingItems | async">
+      <ion-item-sliding *ngFor="let item of userNotes | async">
         <ion-item>
           {{ item.$value }}
         </ion-item>
