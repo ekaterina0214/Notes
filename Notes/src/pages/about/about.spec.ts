@@ -1,6 +1,6 @@
 import { DebugElement } from "@angular/core";
 import { ComponentFixture } from "@angular/core/testing";
-import {EditProfilePage} from "./edit_profile";
+import {AboutPage} from "./about";
 import { async } from "@angular/core/testing";
 import { TestBed } from "@angular/core/testing";
 import { IonicModule, NavController, Platform, ToastController, NavParams } from "ionic-angular";
@@ -13,16 +13,16 @@ import { FirebaseApp, AngularFireModule } from "angularfire2";
 import { FirebaseProvider } from "../../providers/firebase/firebase";
 import { IonicStorageModule } from "@ionic/storage";
 
-describe('EditProfilePage', () => {
+describe('AboutPage', () => {
 	let de: DebugElement;
-	let comp: EditProfilePage;
-    let fixture: ComponentFixture<EditProfilePage>;
+	let comp: AboutPage;
+    let fixture: ComponentFixture<AboutPage>;
 
     beforeEach(async(() => {
 	TestBed.configureTestingModule({
-		declarations: [EditProfilePage],
+		declarations: [AboutPage],
 		imports: [
-			IonicModule.forRoot(EditProfilePage),
+			IonicModule.forRoot(AboutPage),
 			IonicStorageModule.forRoot()            
 		],
 		providers: [
@@ -34,9 +34,23 @@ describe('EditProfilePage', () => {
 	});
 }));
 beforeEach(() => {
-	fixture = TestBed.createComponent(EditProfilePage);
+	fixture = TestBed.createComponent(AboutPage);
 	comp = fixture.componentInstance;
+	de = fixture.debugElement.query(By.css('h5'));   
+	
 });
 it('should be defined', () => expect(fixture).toBeDefined);
+
+it('should have expected <h5> text', () => {
+	fixture.detectChanges();
+	const h5 = de.nativeElement;
+	expect(h5.innerText).toMatch('This ap is created by Kateryna Fomin and Igor Batrak');
+});
+
+it('should be empty when page starts', () => {
+	fixture.detectChanges();
+	let feedback=fixture.debugElement.query(By.css('#basic_input'));
+	expect(feedback.nativeElement.innerText.length).toEqual(0);
+});
 
 });

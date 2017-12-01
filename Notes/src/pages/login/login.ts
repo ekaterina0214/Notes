@@ -5,6 +5,8 @@ import { RegisterPage } from '../register/register';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HomePage } from '../home/home';
 import { ToastController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -19,17 +21,17 @@ import { ToastController } from 'ionic-angular';
 })
 export class LoginPage {
   user = {} as User;
-  constructor(private afauth: AngularFireAuth, private toastCtrl: ToastController,
-    public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private toast:ToastController,private storage: Storage,private afauth:AngularFireAuth,
+    public navCtrl: NavController) {
   }
 
   presentToast(message: string) {
-    let toast = this.toastCtrl.create({
+    let newtoast = this.toast.create({
       message: message,
       duration: 3000,
       position: 'bottom'
     });
-    toast.present();
+    newtoast.present();
   }
 
   async login(user: User) {
@@ -51,8 +53,7 @@ export class LoginPage {
       this.presentToast(e);
     }
   }
-
-  register() {
+ register(toast:ToastController) {
     this.navCtrl.push(RegisterPage);
   }
 

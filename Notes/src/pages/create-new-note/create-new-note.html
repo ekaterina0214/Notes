@@ -14,7 +14,7 @@
     <ion-input type="text" [(ngModel)]="note.title"></ion-input>
   </ion-item>
 
-  <textarea wrap="soft" placeholder="Insert content of your Note here"></textarea>
+  <textarea wrap="soft" placeholder="Insert content of your Note here" [(ngModel)]="note.content"></textarea>
 
   <button ion-button class="btnCenter" full (click)=createNewNote()>Create</button>
 

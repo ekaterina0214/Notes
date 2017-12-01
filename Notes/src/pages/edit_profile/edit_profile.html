@@ -1,23 +1,32 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Edit Profile</ion-title>
-  </ion-navbar>
-</ion-header>
+  
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      <ion-title>Edit Profile</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  
+  <ion-content padding>
+  <ion-item >
+    <ion-label floating>First name</ion-label>
+    <ion-input id="first_name" type="first_name" [(ngModel)]="user.first_name"></ion-input>
+  </ion-item>
+  
+  <ion-item >
+    <ion-label floating>Last name</ion-label>
+    <ion-input id="last_name" [(ngModel)]="user.last_name"></ion-input>
+  </ion-item>
 
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
-</ion-content>
+  <ion-item >
+    <ion-label floating>Phone</ion-label>
+    <ion-input id="phone" [(ngModel)]="user.phone"></ion-input>
+  </ion-item>
+  
+    <button margin=20 ion-button (click)="save(user)">Save</button>  
+  
+  </ion-content>

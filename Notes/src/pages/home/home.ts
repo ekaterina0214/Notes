@@ -14,6 +14,7 @@ export class HomePage {
  
   constructor(public navCtrl: NavController, public firebaseProvider: FirebaseProvider) {
     this.userNotes = this.firebaseProvider.getUserNotes();
+    var n=0;
   }
  
   addItem() {

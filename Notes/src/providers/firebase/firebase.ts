@@ -15,11 +15,13 @@ export class FirebaseProvider {
    constructor(public afd: AngularFireDatabase) { }
   
    getUserNotes() {
-     return this.afd.list('/userNotes/');
+     var list=this.afd.list('/userNotesTitles/');
+     return list;
    }
   
    addItem(name) {
      this.afd.list('/userNotes/').push(name);
+     this.afd.list('/userNotesTitles/').push(name.title);
    }
   
    removeItem(id) {

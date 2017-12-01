@@ -18,6 +18,8 @@ import { AngularFireModule } from 'angularfire2';
 import { FirebaseProvider } from './../providers/firebase/firebase';
 import { CreateNewNotePage } from '../pages/create-new-note/create-new-note';
 import { SettingsPage } from '../pages/settings/settings';
+import { IonicStorageModule } from '@ionic/storage';
+import { AboutPage } from '../pages/about/about';
 
   // Initialize Firebase
   const firebaseConfig = {
@@ -38,7 +40,8 @@ import { SettingsPage } from '../pages/settings/settings';
     LoginPage,
     RegisterPage,
     CreateNewNotePage,
-    SettingsPage
+    SettingsPage,
+    AboutPage
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { SettingsPage } from '../pages/settings/settings';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -57,7 +61,8 @@ import { SettingsPage } from '../pages/settings/settings';
     LoginPage,
     RegisterPage,
     CreateNewNotePage,
-    SettingsPage
+    SettingsPage,
+    AboutPage
   ],
   providers: [
     StatusBar,

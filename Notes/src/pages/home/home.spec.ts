@@ -1,6 +1,6 @@
-import { DebugElement } from "@angular/core";
+/*import { DebugElement } from "@angular/core";
 import { ComponentFixture } from "@angular/core/testing";
-import {EditProfilePage} from "./edit_profile";
+import {HomePage} from "./home";
 import { async } from "@angular/core/testing";
 import { TestBed } from "@angular/core/testing";
 import { IonicModule, NavController, Platform, ToastController, NavParams } from "ionic-angular";
@@ -12,21 +12,22 @@ import { AngularFireAuth } from "angularfire2/auth";
 import { FirebaseApp, AngularFireModule } from "angularfire2";
 import { FirebaseProvider } from "../../providers/firebase/firebase";
 import { IonicStorageModule } from "@ionic/storage";
+import { AngularFireDatabase } from "angularfire2/database";
 
-describe('EditProfilePage', () => {
+describe('HomePage', () => {
 	let de: DebugElement;
-	let comp: EditProfilePage;
-    let fixture: ComponentFixture<EditProfilePage>;
+	let comp: HomePage;
+    let fixture: ComponentFixture<HomePage>;
 
     beforeEach(async(() => {
 	TestBed.configureTestingModule({
-		declarations: [EditProfilePage],
+		declarations: [HomePage],
 		imports: [
-			IonicModule.forRoot(EditProfilePage),
+			IonicModule.forRoot(HomePage),
 			IonicStorageModule.forRoot()            
 		],
 		providers: [
-			NavController,
+			NavController,FirebaseProvider,AngularFireDatabase,FirebaseApp,
 { provide: Platform, useClass: PlatformMock},
 { provide: StatusBar, useClass: StatusBarMock },
 { provide: SplashScreen, useClass: SplashScreenMock },
@@ -34,9 +35,9 @@ describe('EditProfilePage', () => {
 	});
 }));
 beforeEach(() => {
-	fixture = TestBed.createComponent(EditProfilePage);
-	comp = fixture.componentInstance;
+	fixture = TestBed.createComponent(HomePage);
+    comp = fixture.componentInstance;
 });
 it('should be defined', () => expect(fixture).toBeDefined);
 
-});
+});*/

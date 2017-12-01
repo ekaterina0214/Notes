@@ -34,7 +34,7 @@ export class CreateNewNotePage {
     try{
       if(this.note.title!=null)
       {
-        this.firebaseProvider.addItem(this.note.title);
+        this.firebaseProvider.addItem(this.note);
         this.navCtrl.pop();
       }
       else{
