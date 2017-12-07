@@ -16,7 +16,7 @@
   
   <ion-item >
     <ion-label floating>Your message</ion-label>
-    <ion-input id="basic_input" type="phone" [(ngModel)]="feedback.content"></ion-input>
+    <ion-input name="feedback" id="basic_input" type="text" [(ngModel)]="feedback.content"></ion-input>
   </ion-item>
   
     <button id="button" margin=20 ion-button (click)="sendFeedback(feedback.content)">Send feedback</button>

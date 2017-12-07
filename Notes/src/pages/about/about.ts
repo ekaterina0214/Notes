@@ -15,27 +15,30 @@ import { Feedback } from '../../models/feedback';
   templateUrl: 'about.html',
 })
 export class AboutPage {
-  public feedback={} as Feedback;
-  constructor(public navCtrl: NavController, private toast:ToastController) {
+  public feedback={'content':null};//: Feedback;
+  constructor(public navCtrl: NavController, public toast:ToastController) {
+    //this.feedback.content="123";
   }
 
-  sendFeedback(content:string){
-    if(content!=null){
-      this.presentToast(content);
-      console.log(content);
+  public sendFeedback(content:string){
+    if(this.feedback.content!=null)
+    {
+      this.presentToast(this.feedback.content);
     }
     else{
       this.presentToast("Fill field");
     }
   }
 
+public test;
   presentToast(message: string) {
-    let newtoast = this.toast.create({
+    this.test = this.toast.create({
       message: message,
       duration: 3000,
       position: 'bottom'
     });
-    newtoast.present();
+    this.test.present();
+    //return message;
   }
 
 }

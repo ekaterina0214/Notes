@@ -39,4 +39,15 @@ beforeEach(() => {
 });
 it('should be defined', () => expect(fixture).toBeDefined);
 
+
+
+it('input shouldn`t have empty title',async()=>{
+	let ttl=fixture.debugElement.query(By.css('#title'));
+	let title=ttl.nativeElement;
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		expect(title.innerText).not.toEqual("");
+	});
+});
+
 });
