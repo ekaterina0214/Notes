@@ -46,8 +46,237 @@ it('input shouldn`t have empty title',async()=>{
 	let title=ttl.nativeElement;
 	fixture.detectChanges();
 	fixture.whenStable().then(() => {
-		expect(title.innerText).not.toEqual("");
+		expect(title.textContent).not.toEqual("");
 	});
 });
 
+it('input should have title "Edit Profile"',async()=>{
+	let ttl=fixture.debugElement.query(By.css('#title'));
+	let title=ttl.nativeElement;
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		expect(title.textContent).toEqual("Edit Profile");
+	});
+});
+
+it('should have label "First name"',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let lbl=fixture.debugElement.query(By.css('#first_name'));
+		let label=lbl.nativeElement;
+		expect(label.innerText).toEqual("First name");
+	});	
+});
+
+it('should have label "Last name"',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let lbl=fixture.debugElement.query(By.css('#last_name'));
+		let label=lbl.nativeElement;
+		expect(label.innerText).toEqual("Last name");
+	});	
+});
+
+it('should have label "Phone"',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let lbl=fixture.debugElement.query(By.css('#phone'));
+		let label=lbl.nativeElement;
+		expect(label.innerText).toEqual("Phone");
+	});	
+});
+
+it('should have label "Phone"',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn=fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		expect(button.textContent).toEqual("Save");
+	});	
+});
+
+it('First name shouldn`t have less than 2 symbols',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn = fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		let inpt=fixture.debugElement.query(By.css('ion-input [name=first_name]'));
+		let input=inpt.nativeElement;
+		input.value="n";
+		input.dispatchEvent(new Event('input'));
+		button.click();
+		console.log(comp.user.first_name.length);
+		expect(comp.user.first_name.length).not.toBeGreaterThanOrEqual(2);
+	});		
+});
+
+it('Last name shouldn`t have less than 2 symbols',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn = fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		let inpt=fixture.debugElement.query(By.css('ion-input [name=last_name]'));
+		let input=inpt.nativeElement;
+		input.value="n";
+		input.dispatchEvent(new Event('input'));
+		button.click();
+		expect(comp.user.last_name.length).not.toBeGreaterThanOrEqual(2);
+	});		
+});
+
+it('Phone shouldn`t have less than 6 symbols',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn = fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		let inpt=fixture.debugElement.query(By.css('ion-input [name=phone]'));
+		let input=inpt.nativeElement;
+		input.value="09520";
+		input.dispatchEvent(new Event('input'));
+		button.click();
+		expect(comp.user.last_name.length).not.toBeGreaterThanOrEqual(6);
+	});		
+});
+
+it('Phone should have type number',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn = fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		let inpt=fixture.debugElement.query(By.css('ion-input [name=phone]'));
+		let input=inpt.nativeElement;
+		input.dispatchEvent(new Event('input'));
+		button.click();
+		expect(input.type).toBe('number');
+	});		
+});
+
+it('First name shouldn`t have more than 20 symbols',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn = fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		let inpt=fixture.debugElement.query(By.css('ion-input [name=first_name]'));
+		let input=inpt.nativeElement;
+		input.value="nnbkdfjlsfj;dsfjjkmlr";
+		input.dispatchEvent(new Event('input'));
+		button.click();
+		console.log(comp.user.first_name.length);
+		expect(comp.user.first_name.length).not.toBeLessThanOrEqual(20);
+	});		
+});
+
+it('Last name shouldn`t have more than 20 symbols',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn = fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		let inpt=fixture.debugElement.query(By.css('ion-input [name=last_name]'));
+		let input=inpt.nativeElement;
+		input.value="nnbkdfjlsfj;dsfjjkmlr";
+		input.dispatchEvent(new Event('input'));
+		button.click();
+		expect(comp.user.last_name.length).not.toBeLessThanOrEqual(20);
+	});		
+});
+
+it('Phone shouldn`t have more than 20 symbols',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn = fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		let inpt=fixture.debugElement.query(By.css('ion-input [name=phone]'));
+		let input=inpt.nativeElement;
+		input.value="095200952009520095205";
+		input.dispatchEvent(new Event('input'));
+		button.click();
+		expect(comp.user.last_name.length).not.toBeLessThanOrEqual(20);
+	});		
+});
+
+it('First name should have more or equal than 2 symbols',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn = fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		let inpt=fixture.debugElement.query(By.css('ion-input [name=first_name]'));
+		let input=inpt.nativeElement;
+		input.value="nn";
+		input.dispatchEvent(new Event('input'));
+		button.click();
+		console.log(comp.user.first_name.length);
+		expect(comp.user.first_name.length).toBeGreaterThanOrEqual(2);
+	});		
+});
+
+it('Last name should have more or equal than 2 symbols',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn = fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		let inpt=fixture.debugElement.query(By.css('ion-input [name=last_name]'));
+		let input=inpt.nativeElement;
+		input.value="nn";
+		input.dispatchEvent(new Event('input'));
+		button.click();
+		expect(comp.user.last_name.length).toBeGreaterThanOrEqual(2);
+	});		
+});
+
+it('Phone should have more or equal than 6 symbols',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn = fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		let inpt=fixture.debugElement.query(By.css('ion-input [name=phone]'));
+		let input=inpt.nativeElement;
+		input.value="095200";
+		input.dispatchEvent(new Event('input'));
+		button.click();
+		expect(comp.user.last_name.length).toBeGreaterThanOrEqual(6);
+	});		
+});
+
+it('First name should have less or equal than 20 symbols',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn = fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		let inpt=fixture.debugElement.query(By.css('ion-input [name=first_name]'));
+		let input=inpt.nativeElement;
+		input.value="nnbkdfjlsfj;dsfjjkml";
+		input.dispatchEvent(new Event('input'));
+		button.click();
+		console.log(comp.user.first_name.length);
+		expect(comp.user.first_name.length).toBeLessThanOrEqual(20);
+	});		
+});
+
+it('Last name should have kess or equal than 20 symbols',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn = fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		let inpt=fixture.debugElement.query(By.css('ion-input [name=last_name]'));
+		let input=inpt.nativeElement;
+		input.value="nnbkdfjlsfj;dsfjjkmr";
+		input.dispatchEvent(new Event('input'));
+		button.click();
+		expect(comp.user.last_name.length).toBeLessThanOrEqual(20);
+	});		
+});
+
+it('Phone should have less or equal than 20 symbols',async()=>{
+	fixture.detectChanges();
+	fixture.whenStable().then(() => {
+		let btn = fixture.debugElement.query(By.css('#button'));
+		let button=btn.nativeElement;
+		let inpt=fixture.debugElement.query(By.css('ion-input [name=phone]'));
+		let input=inpt.nativeElement;
+		input.value="09520095200952009520";
+		input.dispatchEvent(new Event('input'));
+		button.click();
+		expect(comp.user.last_name.length).toBeLessThanOrEqual(20);
+	});		
+});
 });

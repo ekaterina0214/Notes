@@ -13,20 +13,20 @@
   
   <ion-content padding>
   <ion-item >
-    <ion-label floating>First name</ion-label>
-    <ion-input id="first_name" type="first_name" [(ngModel)]="user.first_name"></ion-input>
+    <ion-label id="first_name" floating>First name</ion-label>
+    <ion-input name="first_name" type="text" [(ngModel)]="user.first_name"></ion-input>
   </ion-item>
   
   <ion-item >
-    <ion-label floating>Last name</ion-label>
-    <ion-input id="last_name" [(ngModel)]="user.last_name"></ion-input>
+    <ion-label id="last_name" floating>Last name</ion-label>
+    <ion-input name="last_name" [(ngModel)]="user.last_name"></ion-input>
   </ion-item>
 
   <ion-item >
-    <ion-label floating>Phone</ion-label>
-    <ion-input id="phone" [(ngModel)]="user.phone"></ion-input>
+    <ion-label id="phone" floating>Phone</ion-label>
+    <ion-input type="number" name="phone" [(ngModel)]="user.phone"></ion-input>
   </ion-item>
   
-    <button margin=20 ion-button (click)="save(user)">Save</button>  
+    <button margin=20 id="button" ion-button (click)="save(user)">Save</button>  
   
   </ion-content>

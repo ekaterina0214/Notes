@@ -9,7 +9,7 @@ import { HomePage } from '../home/home';
   templateUrl: 'edit_profile.html'
 })
 export class EditProfilePage {
-  user={} as User;
+  public user={'first_name':null,'last_name':null,'phone':null};
 
   constructor(private toast:ToastController,private storage: Storage,
     public navCtrl: NavController) {
