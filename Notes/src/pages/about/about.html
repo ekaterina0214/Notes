@@ -4,7 +4,7 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
           </button>
-      <ion-title>About</ion-title>
+      <ion-title id="title">About</ion-title>
     </ion-navbar>
   
   </ion-header>
@@ -19,6 +19,6 @@
     <ion-input id="basic_input" type="phone" [(ngModel)]="feedback.content"></ion-input>
   </ion-item>
   
-    <button margin=20 ion-button (click)="sendFeedback(feedback)">Send feedback</button>
+    <button id="button" margin=20 ion-button (click)="sendFeedback(feedback.content)">Send feedback</button>
 
   </ion-content>

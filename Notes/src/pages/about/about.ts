@@ -15,14 +15,17 @@ import { Feedback } from '../../models/feedback';
   templateUrl: 'about.html',
 })
 export class AboutPage {
-  feedback={} as Feedback;
+  public feedback={} as Feedback;
   constructor(public navCtrl: NavController, private toast:ToastController) {
   }
 
-  sendFeedback(feedback:Feedback){
-    if(feedback.content!=null){
-      console.log(feedback.content);
-      this.presentToast("Your feedback was send");
+  sendFeedback(content:string){
+    if(content!=null){
+      this.presentToast(content);
+      console.log(content);
+    }
+    else{
+      this.presentToast("Fill field");
     }
   }
 
